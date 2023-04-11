@@ -3,9 +3,6 @@
         <div class="collapse navbar-collapse">
         <div class="navbar-nav>">
                 <router-link to="/indexDestination">Index</router-link>
-
-                <router-link to="/editDestination">Edit</router-link>
-
                 <router-link to="/createDestination">Create</router-link>
         </div>
         </div>

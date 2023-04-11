@@ -62,7 +62,7 @@ export default {
     },
     created() {
         axios
-            .get(`/api/destination/${this.$route.params.id}`)
+            .get(`/api/destination/${this.$route.params.id}/edit`)
             .then((response) => {
                 this.destination = response.data;
                 // console.log(response.data);
@@ -71,9 +71,9 @@ export default {
     methods: {
         updateDestination() {
             axios
-                .post(`/api/destination/update/${this.$route.params.id}`, this.destination)
+                .put(`/api/destination/update`, this.destination)
                 .then((response) => {
-                    this.$router.push({ name: "indexDestination" });
+                    this.$router.push({ name: "IndexDestination" });
                 });
         },
     }

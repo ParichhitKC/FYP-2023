@@ -69,8 +69,12 @@ export default {
             const formData = new FormData();
             formData.append('stories_image', this.storiesImage);
             formData.append('title_image', this.titleImage);
+            formData.append('name',this.destination.name);
+            formData.append('stories',this.destination.stories);
+            formData.append('district',this.destination.district);
+            formData.append('zone',this.destination.zone);
             axios
-                .post('http://127.0.0.1:8000/api/destination', this.destination)
+                .post('/api/destination', formData)
                 .then(response => (
                     this.$router.push({name: 'IndexDestination'})
                     // console.log(response.data)
@@ -81,6 +85,8 @@ export default {
         onFileChange(event) {
             this.storiesImage = event.target.files[0]
             this.titleImage = event.target.files[0]
+            console.log(this.storiesImage)
+            console.log(this.titleImage)
         }
     }
 }

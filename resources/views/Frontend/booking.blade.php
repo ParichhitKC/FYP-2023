@@ -88,7 +88,7 @@
                     <div class="col-md-6">
 
                         <div class="form-input ">
-                            <input type="text" value="{{auth()->user()->phone}}" required>
+                            <input type="text" value="{{Auth::check() ? Auth::user()->phone: ''}}" required>
                             <label class="lh-1 text-16 text-light-1">Phone Number</label>
                         </div>
 
@@ -108,7 +108,7 @@
                         <div class="row y-gap-20 items-center justify-between">
                             <div class="col-auto">
                                 <div class="text-14 text-light-1">
-                                    By proceeding with this booking, I agree to GoTrip Terms of Use and Privacy Policy.
+                                    By proceeding with this booking, I agree to Travel Terms of Use and Privacy Policy.
                                 </div>
                             </div>
 
