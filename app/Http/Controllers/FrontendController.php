@@ -168,4 +168,9 @@ class FrontendController extends Controller
 //        dd($booking);
         return view('frontend.bookingHistory')->with(compact('booking'));
     }
+
+    public function viewInvoice(Request $request,$id){
+        $booking = Booking::find($id)->first();
+        return view('frontend.invoice')->with(compact('booking'));
+    }
 }

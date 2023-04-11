@@ -48,6 +48,7 @@ Route::post('/confirm',[FrontendController::class,'room_booking'])->name('front.
 Route::get('/profile',[FrontendController::class,'profile'])->name('front.profile');
 Route::post('/updatePassword',[FrontendController::class,'updateProfile'])->name('updateProfile');
 Route::get('/history',[FrontendController::class,'bookingHistory'])->name('bookingHistory');
+Route::get('/invoice/{id}',[FrontendController::class,'viewInvoice'])->name('booking.viewInvoice');
 Route::get('{any}', function () {
     return view('layouts.app');
 })->where('any', '.*');
