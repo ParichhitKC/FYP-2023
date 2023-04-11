@@ -18,7 +18,7 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $destinations = destination::orderBy('id','desc')->paginate(5);
+        $destinations = destination::orderBy('id','desc')->paginate(10);
 //        return view('destination.index', compact('destinations'));
         return [
             "status" => 1,

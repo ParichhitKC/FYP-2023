@@ -43,7 +43,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <strong>Title Image:</strong>
-                            <input type="file" name="title_image" placeholder="Choose file" id="destination"  v-on:change="onFileChange">
+                            <input type="file" name="title_image" placeholder="Choose file" id="destination"  v-on:change="FileChange">
 
                     </div>
                 </div>
@@ -75,18 +75,20 @@ export default {
             formData.append('zone',this.destination.zone);
             axios
                 .post('/api/destination', formData)
+
                 .then(response => (
-                    this.$router.push({name: 'IndexDestination'})
+                    this.$router.push({name: "indexDestination"})
+
                     // console.log(response.data)
                 ))
-                .catch(error => console.log(error))
-                .finally(() => this.loading = false)
+
         },
         onFileChange(event) {
             this.storiesImage = event.target.files[0]
+        },
+        FileChange(event){
             this.titleImage = event.target.files[0]
-            console.log(this.storiesImage)
-            console.log(this.titleImage)
+
         }
     }
 }

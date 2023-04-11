@@ -38,8 +38,8 @@
                 <td><img class="table-img" :src="`/images/${destination.stories_image}`"></td>
                 <td>
                     <div class="btn-group" role="group">
-<!--                         <router-link :to="{name: 'editDestination', params:{id: destination.id}}" class="btn btn-primary">Edit-->
-<!--                         </router-link>-->
+                         <router-link :to="{name: 'editDestination', params:{id: destination.id}}" class="btn btn-primary">Edit
+                         </router-link>
                         <button class="btn btn-danger" @click="deleteDestination(destination.id)">Delete</button>
                     </div>
                 </td>
@@ -50,13 +50,13 @@
 </template>
 
 <script>
-import editDestination from "@/components/editDestination.vue";
+
 
 export default {
     data() {
         return {
             destinations: [],
-            edit_info:[],
+
         };
     },
      created() {
@@ -66,14 +66,7 @@ export default {
         });
     },
     methods: {
-        editDestination(id) {
-            console.log(id);
-            axios.get('/api/destination/'+id+'/edit').then(response => {
-                // debugger;
-                console.log(response);
-                // this.edit_info = response.data.data.data;
-            });
-        },
+
         deleteDestination(id) {
             axios.delete(`/api/destination/${id}`).then(response => {
                 // debugger;

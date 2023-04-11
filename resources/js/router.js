@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from "vue-router";
 
-import IndexDestination from './components/indexDestination.vue';
+import indexDestination from './components/indexDestination.vue';
 import createDestination from './components/createDestination.vue';
 import editDestination from './components/editDestination.vue';
 
@@ -8,17 +8,17 @@ import editDestination from './components/editDestination.vue';
 const routes = [
     {
         path : '/indexDestination',
-        name : IndexDestination,
-        component : IndexDestination
+        component : indexDestination,
+        name : 'indexDestination',
     },
     {
         path : '/createDestination',
-        name : createDestination,
+        name : 'createDestination',
         component : createDestination
     },
     {
-        path : '/editDestination',
-        name : editDestination,
+        path : '/:id/edit',
+        name : 'editDestination',
         component : editDestination
     },
 ];

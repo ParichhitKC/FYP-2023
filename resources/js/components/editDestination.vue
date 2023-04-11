@@ -35,7 +35,7 @@
     <div class="col-md-12">
         <div class="form-group">
             <strong>Stories Image:</strong>
-            <input type="file" name="stories_image" placeholder="Choose file" id="destination">
+            <input type="file" name="stories_image" placeholder="Choose file" id="destination" >
         </div>
     </div>
     <div class="col-md-12">
@@ -62,7 +62,7 @@ export default {
     },
     created() {
         axios
-            .get(`/api/destination/${this.$route.params.id}/edit`)
+            .get(`/api/destination/${this.$route.params.id}`)
             .then((response) => {
                 this.destination = response.data;
                 // console.log(response.data);
@@ -71,7 +71,7 @@ export default {
     methods: {
         updateDestination() {
             axios
-                .put(`/api/destination/update`, this.destination)
+                .put(`/api/destination/${this.$route.params.id}`, this.destination)
                 .then((response) => {
                     this.$router.push({ name: "IndexDestination" });
                 });
