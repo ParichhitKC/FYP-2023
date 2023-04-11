@@ -46,6 +46,7 @@ Route::get('logout', function ()
 Route::post('/test/{slug}',[FrontendController::class,'selectDate'])->name('front.check');
 Route::post('/confirm',[FrontendController::class,'room_booking'])->name('front.confirm');
 Route::get('/profile',[FrontendController::class,'profile'])->name('front.profile');
+Route::post('/updatePassword',[FrontendController::class,'updateProfile'])->name('updateProfile');
 
 Route::get('{any}', function () {
     return view('layouts.app');

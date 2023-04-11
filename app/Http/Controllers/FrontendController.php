@@ -11,34 +11,43 @@ use Carbon\CarbonPeriod;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\Store;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
-    public function home(){
-        $popular_destination = destination::orderBy('views','desc')->take(5)->get();
+    public function home()
+    {
+        $popular_destination = destination::orderBy('views', 'desc')->take(5)->get();
         return view('welcome')->with(compact('popular_destination'));
     }
 
-    public function hotelList(){
+    public function hotelList()
+    {
         $hotels = hotel::get();
         $destination = destination::all();
-        return view('frontend.hotel-list')->with(compact('hotels','destination'));
+        return view('frontend.hotel-list')->with(compact('hotels', 'destination'));
     }
-    public function destinationList(){
+
+    public function destinationList()
+    {
         $destination = destination::get();
         return view('frontend.destination-list')->with(compact('destination'));
     }
-    public function selectDate(Request $request){
+
+    public function selectDate(Request $request)
+    {
         $checkin = $request->input('checkin');
         $checkout = $request->input('checkout');
 
-        $checkinDate = $request->session()->put('checkin',$checkin);
-        $checkoutDate = $request->session()->put('checkout',$checkout);
+        $checkinDate = $request->session()->put('checkin', $checkin);
+        $checkoutDate = $request->session()->put('checkout', $checkout);
         return redirect()->back();
     }
-    public function viewHotel(Request $request,$slug){
-        $hotel = hotel::where('slug',$slug)->first();
+
+    public function viewHotel(Request $request, $slug)
+    {
+        $hotel = hotel::where('slug', $slug)->first();
 //        $room=Room::where('hotel_id',$hotel->id)->get();
 
 
@@ -53,10 +62,9 @@ class FrontendController extends Controller
             })->get();
 
 
-
-
-        return view('frontend.hotel')->with(compact('hotel','availableRooms','checkinDate','checkoutDate'));
+        return view('frontend.hotel')->with(compact('hotel', 'availableRooms', 'checkinDate', 'checkoutDate'));
     }
+
     public function viewDestination($slug)
     {
         $destinations = destination::where('slug', $slug)->first();
@@ -69,8 +77,11 @@ class FrontendController extends Controller
 
     }
 
-    public function profile(){
-        return view('frontend.profile');
+    public function profile()
+    {
+        $user_id = Auth::user()->id;
+        $user = User::where('id',$user_id)->first();
+        return view('frontend.profile')->with(compact('user'));
     }
 
 //    public function checkAvailability(Request $request)
@@ -91,15 +102,17 @@ class FrontendController extends Controller
 //
 //
 //    }
-    public function booking($id, Request $request ){
-        $room=Room::find($id);
+    public function booking($id, Request $request)
+    {
+        $room = Room::find($id);
         $checkinDate = $request->session()->get('checkin');
         $checkoutDate = $request->session()->get('checkout');
 
-        return view('Frontend.booking')->with(compact('room','checkinDate','checkoutDate'));
+        return view('Frontend.booking')->with(compact('room', 'checkinDate', 'checkoutDate'));
     }
 
-    public function room_booking( Request $request){
+    public function room_booking(Request $request)
+    {
 
         $checkinDate = $request->session()->get('checkin');
         $checkoutDate = $request->session()->get('checkout');
@@ -113,5 +126,39 @@ class FrontendController extends Controller
         $booking->save();
 
         return redirect('/');
+    }
+
+
+    public function updateProfile(Request $request)
+    {
+//        $this->validate($request, [
+//            'name' => 'required',
+//            'email' => 'required',
+//            'current_password' => 'required',
+//            'password' => 'required|same:confirm_password',
+//            'confirm_password' => 'required',
+//        ]);
+//        dd($request->all());
+
+        $user = User::find(Auth::user()->id);
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $userPassword = $user->password;
+//        dd((Hash::check($request->current_password,$user->password)));
+        if ($request['password'] == $request['confirm_password']) {
+            if (Hash::check($request->current_password, $user->password) == true) {
+                $user->password = Hash::make($request->input('password'));
+
+            } else {
+                return back()->withErrors(['current_password' => 'Your current password do not match.']);
+            }
+        } else {
+            return redirect()->back()->withErrors(['current_password' => 'Your new password and confirmed password do not match.']);
+        }
+
+        $user->save();
+
+        return redirect()->route('front.profile')
+            ->with('success', 'Profile updated successfully');
     }
 }
