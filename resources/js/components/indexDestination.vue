@@ -5,6 +5,7 @@
 }
 </style>
 <template>
+    <router-link :to='{name:"createDestination"}' class="btn btn-primary">Create New Destination</router-link>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">

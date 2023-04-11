@@ -90,7 +90,7 @@ class DestinationController extends Controller
      */
     public function show(destination $destination)
     {
-        return view('destination.show',compact('destination'));
+//        return view('destination.show',compact('destination'));
         return [
             "status" => 1,
             "data" => $destination

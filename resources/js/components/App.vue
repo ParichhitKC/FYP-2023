@@ -1,9 +1,11 @@
 <template>
-    <nav class ="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="collapse navbar-collapse">
-        <div class="navbar-nav>">
-                <router-link to="/indexDestination">Index</router-link>
-                <router-link to="/createDestination">Create</router-link>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+
+                <router-link to="/indexDestination">Destination</router-link>
+        </div>
         </div>
         </div>
     </nav>
