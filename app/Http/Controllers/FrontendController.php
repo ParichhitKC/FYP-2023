@@ -119,6 +119,7 @@ class FrontendController extends Controller
 
         $booking = new Booking;
         $booking->room_id = $request['room_id'];
+        $booking->price = $request['price'];
         $booking->user_id = Auth::user()->id;
         $booking->checkin = $checkinDate;
         $booking->checkout = $checkoutDate;
@@ -160,5 +161,11 @@ class FrontendController extends Controller
 
         return redirect()->route('front.profile')
             ->with('success', 'Profile updated successfully');
+    }
+    public function bookingHistory(){
+        $user_id = Auth()->user()->id;
+        $booking = Booking::where('user_id',$user_id)->get();
+//        dd($booking);
+        return view('frontend.bookingHistory')->with(compact('booking'));
     }
 }

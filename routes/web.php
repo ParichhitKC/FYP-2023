@@ -47,7 +47,7 @@ Route::post('/test/{slug}',[FrontendController::class,'selectDate'])->name('fron
 Route::post('/confirm',[FrontendController::class,'room_booking'])->name('front.confirm');
 Route::get('/profile',[FrontendController::class,'profile'])->name('front.profile');
 Route::post('/updatePassword',[FrontendController::class,'updateProfile'])->name('updateProfile');
-
+Route::get('/history',[FrontendController::class,'bookingHistory'])->name('bookingHistory');
 Route::get('{any}', function () {
     return view('layouts.app');
 })->where('any', '.*');

@@ -79,8 +79,8 @@
                     <div class="col-md-6">
 
                         <div class="form-input ">
-                            <input type="text" required value="{{$room->room_type}}" name="room_type">
-                            <label class="lh-1 text-16 text-light-1">Room_type</label>
+                            <input type="text" required value="{{$room->price}}" name="price">
+                            <label class="lh-1 text-16 text-light-1">Price</label>
                         </div>
 
                     </div>
@@ -247,14 +247,7 @@
                             </div>
                         </div>
 
-                        <div class="row y-gap-5 justify-between pt-5">
-                            <div class="col-auto">
-                                <div class="text-15">Taxes and fees</div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="text-15">{{$room->price*13/100}}</div>
-                            </div>
-                        </div>
+
 
                         <div class="row y-gap-5 justify-between pt-5">
                             <div class="col-auto">
@@ -271,7 +264,7 @@
                                     <div class="text-18 lh-13 fw-500">Total</div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="text-18 lh-13 fw-500">{{}}</div>
+                                    <div class="text-18 lh-13 fw-500" name="total">{{$room->price}}</div>
                                 </div>
                             </div>
                         </div>
