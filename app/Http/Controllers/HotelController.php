@@ -16,10 +16,6 @@ class HotelController extends Controller
         $destination = destination::all();
 //        dd($destination);
         return view('hotel.index', compact('hotel','destination'));
-        return [
-            "status" => 1,
-            "data" =>  $hotel
-        ];
     }
 
     /**
@@ -58,11 +54,7 @@ class HotelController extends Controller
         $hotel->save();
 
         return redirect()->route('hotel.index')->with('success','hotel has been created successfully.');
-        return [
-            "status" => 1,
-            "data" => $hotel
 
-        ];
     }
 
     /**
@@ -74,10 +66,7 @@ class HotelController extends Controller
     public function show(hotel $hotel)
     {
         return view('hotel.show',compact('hotel'));
-        return [
-            "status" => 1,
-            "data" => $hotel
-        ];
+
     }
 
     /**
@@ -110,11 +99,7 @@ class HotelController extends Controller
         $hotel->update($request->all());
 
         return redirect()->route('hotel.index')->with('success','Hotel Has Been updated successfully');
-        return [
-            "status" => 1,
-            "data" => $hotel,
-            "msg" => "Hotel updated successfully"
-        ];
+
     }
 
     /**
@@ -126,11 +111,7 @@ class HotelController extends Controller
     public function destroy(hotel $hotel)
     {
         $hotel->delete();
-        return [
-            "status" => 1,
-            "data" => $hotel,
-            "msg" =>'Destination deleted successfully'
-        ];
+
         return redirect()->route('hotel.index')->with('success','hotel has been deleted successfully');
     }
 }

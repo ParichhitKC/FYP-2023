@@ -26,7 +26,7 @@ class hotel extends Model
     }
     public function HotelGallery()
     {
-        return $this->hasMany(HotelGallery::class);
+        return $this->hasMany(HotelGallery::class,'hotel_id');
     }
 
 }

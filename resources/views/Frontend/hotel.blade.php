@@ -149,25 +149,20 @@
             </div>
 
             <div class="galleryGrid__item">
-                <img src="img/gallery/1/2.png" alt="image" class="rounded-4">
+                <img src="{{asset('images/'.$gallery->image_1)}}" alt="image" class="rounded-4">
             </div>
 
             <div class="galleryGrid__item relative d-flex">
-                <img src="img/gallery/1/3.png" alt="image" class="rounded-4">
+                <img src="{{asset('images/'.$gallery->image_2)}}" alt="image" class="rounded-4">
 
-                <div class="absolute h-full col-12 flex-center">
-                    <a href="https://www.youtube.com/watch?v=ANYfx4-jyqY" class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1 js-gallery" data-gallery="gallery1">
-                        <i class="icon-play text-16"></i>
-                    </a>
-                </div>
             </div>
 
             <div class="galleryGrid__item">
-                <img src="img/gallery/1/4.png" alt="image" class="rounded-4">
+                <img src="{{asset('images/'.$gallery->image_3)}}" alt="image" class="rounded-4">
             </div>
 
             <div class="galleryGrid__item relative d-flex">
-                <img src="img/gallery/1/5.png" alt="image" class="rounded-4">
+                <img src="{{asset('images/'.$gallery->image_4)}}" alt="image" class="rounded-4">
 
                 <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
 {{--                    <a href="img/gallery/1/1.png" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery" data-gallery="gallery2">--}}

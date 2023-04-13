@@ -5,6 +5,8 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\HotelGController;
+use App\Http\Controllers\DestinationGController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,7 @@ use App\Http\Controllers\RoomController;
     Route::resource('/destination', DestinationController::class)->middleware('is_admin');
     Route::resource('/hotel', HotelController::class)->middleware('is_admin');;
     Route::resource('/room', RoomController::class)->middleware('is_admin');;
+Route::resource('/hotelG', HotelGController::class)->middleware('is_admin');
     Route::get('/', [App\Http\Controllers\FrontendController::class,'home'])->name('welcome');
 
     Auth::routes();
@@ -51,4 +54,4 @@ Route::get('/history',[FrontendController::class,'bookingHistory'])->name('booki
 Route::get('/invoice/{id}',[FrontendController::class,'viewInvoice'])->name('booking.viewInvoice');
 Route::get('{any}', function () {
     return view('layouts.app');
-})->where('any', '.*');
+})->where('any', '.*')->middleware('is_admin');

@@ -11,9 +11,9 @@ class DestinationGallery extends Model
 
     protected $fillable= ['destination_id','image_1','image_2','image_3','image_4'];
 
-    public function HotelGallery()
+    public function Destination()
     {
-        return $this->belongsTo(hotel::class,'hotel_id');
+        return $this->belongsTo(destination::class,'destination_id');
     }
 
 }

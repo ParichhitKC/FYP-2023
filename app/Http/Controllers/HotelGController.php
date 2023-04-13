@@ -14,12 +14,9 @@ class HotelGController extends Controller
      */
     public function index()
     {
+        $hotel = hotel::all();
         $hotelG = HotelGallery::orderBy('id','desc')->paginate(5);
-        return view('HotelG.index', compact('hotelG'));
-        return [
-            "status" => 1,
-            "data" => $hotelG
-        ];
+        return view('HotelG.index', compact('hotelG','hotel'));
     }
 
     /**
@@ -29,7 +26,8 @@ class HotelGController extends Controller
      */
     public function create()
     {
-        return view('$hotelG.create');
+        $hotel =hotel::all();
+        return view('hotelG.create',compact('hotel'));
     }
 
     /**
@@ -58,77 +56,62 @@ class HotelGController extends Controller
         $image_3->move($path, $image_3->getClientOriginalName());
         $image_4->move($path, $image_4->getClientOriginalName());
         $hotelG = new HotelGallery();
-        $hotelG['Hotel_id'] = $request->Hotel_id;
+        $hotelG['hotel_id'] = $request->hotel_id;
         $hotelG['image_1'] = $image_1->getClientOriginalName();
         $hotelG['image_2'] = $image_2->getClientOriginalName();
         $hotelG['image_3'] = $image_3->getClientOriginalName();
         $hotelG['image_4'] = $image_4->getClientOriginalName();
-
         $hotelG->save();
-        return [
-            "status" => 1,
-            "data" => $hotelG
-        ];
-
+        return redirect()->route('hotelG.index')->with('success','hotel gallery has been created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hotel  $hotelG
+     * @param  \App\HotelG  $hotelG
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotelG)
+    public function show(HotelGallery $hotelG)
     {
-        return [
-            "status" => 1,
-            "data" => $hotelG
-        ];
+        return view('hotelG.show',compact('hotelG'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Hotel  $Hotel
+     * @param  \App\HotelG  $hotelG
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hotel $hotelG)
+    public function edit(HotelGallery $hotelG)
     {
-        return view('Hotel.edit',compact('$hotelG'));
+        $hotel = hotel::all();
+        return view('hotelG.edit',compact('hotelG','hotel'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Hotel  $Hotel
+     * @param  \App\Hotel  $hotelG
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotelG)
+    public function update(Request $request, hotelG $hotelG)
     {
-        $HotelG->fill($request->post())->save();
-        return [
-            "status" => 1,
-            "data" => $hotelG,
-            "msg" => "Hotel updated successfully"
-        ];
+        $hotelG->update($request->all());
 
+        return redirect()->route('hotelG.index')->with('success','Hotel Gallery Has Been updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hotel  $Hotel
+     * @param  \App\hotelG  $hotelG
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotelG)
+    public function destroy(HotelGallery $hotelG)
     {
         $hotelG->delete();
-        return [
-            "status" => 1,
-            "data" => $hotelG,
-            "msg" =>'Hotel deleted successfully'
-        ];
+        return redirect()->route('hotelG.index')->with('success','hotel has been deleted successfully');
 
     }
 }

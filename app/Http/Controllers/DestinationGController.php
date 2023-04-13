@@ -16,10 +16,7 @@ class DestinationGController extends Controller
     {
         $destinationG = DestinationGallery::orderBy('id','desc')->paginate(5);
         return view('destinationG.index', compact('destinationG'));
-        return [
-            "status" => 1,
-            "data" => $destinationG
-        ];
+
     }
 
     /**
@@ -29,7 +26,8 @@ class DestinationGController extends Controller
      */
     public function create()
     {
-        return view('destinationG.create');
+        $destination = destination::all();
+        return view('destinationG.create', compact('destination'));
     }
 
     /**
@@ -65,10 +63,7 @@ class DestinationGController extends Controller
         $destinationG['image_4'] = $image_4->getClientOriginalName();
 
         $destinationG->save();
-        return [
-            "status" => 1,
-            "data" => $destinationG
-        ];
+        return redirect()->route('destinationG.index')->with('success','Destination Gallery has been deleted successfully');
 
     }
 
@@ -78,12 +73,10 @@ class DestinationGController extends Controller
      * @param  \App\destination  $destination
      * @return \Illuminate\Http\Response
      */
-    public function show(destination $destinationG)
+    public function show(DestinationGallery $destinationG)
     {
-        return [
-            "status" => 1,
-            "data" => $destinationG
-        ];
+        return redirect()->route('destinationG.index')->with('success','Destination Gallery has been deleted successfully');
+
     }
 
     /**
@@ -92,9 +85,10 @@ class DestinationGController extends Controller
      * @param  \App\destination  $destination
      * @return \Illuminate\Http\Response
      */
-    public function edit(destination $destinationG)
+    public function edit(DestinationGallery $destinationG)
     {
-        return view('destination.edit',compact('destinationG'));
+        $destination =destination::all();
+        return view('destinationG.edit',compact('destinationG','destination'));
     }
 
     /**
@@ -107,11 +101,8 @@ class DestinationGController extends Controller
     public function update(Request $request, destination $destinationG)
     {
         $destinationG->fill($request->post())->save();
-        return [
-            "status" => 1,
-            "data" => $destinationG,
-            "msg" => "Destination updated successfully"
-        ];
+        return redirect()->route('destinationG.index')->with('success','Destination Gallery has been deleted successfully');
+
 
     }
 
@@ -121,14 +112,11 @@ class DestinationGController extends Controller
      * @param  \App\destination  $destination
      * @return \Illuminate\Http\Response
      */
-    public function destroy(destination $destinationG)
+    public function destroy(DestinationGallery $destinationG)
     {
         $destinationG->delete();
-        return [
-            "status" => 1,
-            "data" => $destinationG,
-            "msg" =>'Destination deleted successfully'
-        ];
+        return redirect()->route('destinationG.index')->with('success','Destination Gallery has been deleted successfully');
+
 
     }
 }

@@ -25,10 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //Route::middleware('auth:api')->group(function () {
 Route::resource('/destination', DestinationController::class);
-Route::resource('/hotel', HotelController::class);
-Route::resource('/room', RoomController::class);
-Route::resource('/d_Gallery', DestinationGController::class);
-Route::resource('/h_Gallery', HotelGController::class);
+
+
 
 //    Route::post('/logout', 'Auth\LoginController@logout')->name('logout.api');
 //});

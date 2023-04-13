@@ -14,7 +14,7 @@
 {{--    @stack('script')--}}
 {{--    <!-- END GLOBAL MANDATORY STYLES -->--}}
 {{--    @vite('resources/css/app.css')--}}
-{{--    @vite('resources/js/app.js')--}}
+
 {{--    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->--}}
 
 {{--        <style>--}}
@@ -37,9 +37,9 @@
 {{--<div id="app">--}}
 
 {{--</div>--}}
-
+{{--@vite('resources/js/app.js')--}}
 {{--</body>--}}
-{{--BEGIN GLOBAL MANDATORY SCRIPTS--}}
+
 {{--<script src={{asset("assets_back/assets/js/libs/jquery-3.1.1.min.js")}}></script>--}}
 {{--<script src={{asset("assets_back/plugins/src/global/vendors.min.js")}}></script>--}}
 {{--<script src={{asset("assets_back/bootstrap/js/popper.min.js")}}></script>--}}

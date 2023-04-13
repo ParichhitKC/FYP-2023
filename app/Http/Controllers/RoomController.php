@@ -18,10 +18,7 @@ class RoomController extends Controller
         $destination = destination::all();
         $hotel=hotel::all();
         return view('room.index', compact('room','destination','hotel'));
-        return [
-            "status" => 1,
-            "data" => $room,
-        ];
+
     }
 
     /**
@@ -63,10 +60,7 @@ class RoomController extends Controller
 //        dd($room);
 
         return redirect()->route('room.index')->with('success','room has been created successfully.');
-        return [
-            "status" => 1,
-            "data" => $room,
-        ];
+
     }
 
     /**
@@ -78,10 +72,7 @@ class RoomController extends Controller
     public function show(room $room)
     {
         return view('room.show',compact('room'));
-        return [
-            "status" => 1,
-            "data" => $room,
-        ];
+
     }
 
     /**
@@ -112,11 +103,7 @@ class RoomController extends Controller
         $room->update($request->all());
 
         return redirect()->route('room.index')->with('success','room Has Been updated successfully');
-        return [
-            "status" => 1,
-            "data" => $room,
-            "msg" =>'Room updated successfully'
-        ];
+
     }
 
     /**
@@ -129,10 +116,6 @@ class RoomController extends Controller
     {
         $room->delete();
         return redirect()->route('room.index')->with('success','room has been deleted successfully');
-        return [
-            "status" => 1,
-            "data" => $room,
-            "msg" =>'Room deleted successfully'
-        ];
+
     }
 }

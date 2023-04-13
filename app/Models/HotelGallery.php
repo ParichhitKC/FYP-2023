@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HotelGallery extends Model
 {
     use HasFactory;
-    protected $fillable= ['hotel_id','image_1','image_2','image_3','image_4'];
+    protected $fillable= ['title','hotel_id','image_1','image_2','image_3','image_4'];
 
-    public function HotelGallery()
+    public function hotel()
     {
         return $this->belongsTo(hotel::class,'hotel_id');
     }

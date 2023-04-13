@@ -107,21 +107,29 @@
                         </div>
                     </a>
                 </li>
-                <div class="shadow-bottom"></div>
+
 
                 <li class="menu {{Request::is('room*') ? 'active' : ''}}">
-                    <a href="{{route('room.index')}}" aria-expanded="{{Request::is('main*') ? 'true' : 'false'}}" class="dropdown-toggle">
+                    <a href="{{route('room.index')}}" aria-expanded="{{Request::is('room*') ? 'true' : 'false'}}" class="dropdown-toggle">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                             <span> Room</span>
                         </div>
                     </a>
                 </li>
-                <li class="menu {{Request::is('destination*') ? 'active' : ''}}">
-                    <a href="{{route('destination.index')}}" aria-expanded="{{Request::is('file*') ? 'true' : 'false'}}" class="dropdown-toggle">
+                <li class="menu {{Request::is('HotelGallery*') ? 'active' : ''}}">
+                    <a href="{{route('hotelG.index')}}" aria-expanded="{{Request::is('HotelGallery*') ? 'true' : 'false'}}" class="dropdown-toggle">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span> Destination</span>
+                            <span> Hotel Gallery</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu {{Request::is('DestinationGallery*') ? 'active' : ''}}">
+                    <a href="{{route('destinationG.index')}}" aria-expanded="{{Request::is('DestinationGallery*') ? 'true' : 'false'}}" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span> Destination Gallery</span>
                         </div>
                     </a>
                 </li>

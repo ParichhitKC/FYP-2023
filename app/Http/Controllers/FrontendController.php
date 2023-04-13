@@ -6,6 +6,7 @@ use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\destination;
 use App\Models\hotel;
+use App\Models\HotelGallery;
 use App\Models\Room;
 use Carbon\CarbonPeriod;
 use Carbon\Carbon;
@@ -47,7 +48,9 @@ class FrontendController extends Controller
 
     public function viewHotel(Request $request, $slug)
     {
+
         $hotel = hotel::where('slug', $slug)->first();
+        $gallery = HotelGallery::where('hotel_id', $hotel->id)->first();
 //        $room=Room::where('hotel_id',$hotel->id)->get();
 
 
@@ -62,7 +65,7 @@ class FrontendController extends Controller
             })->get();
 
 
-        return view('frontend.hotel')->with(compact('hotel', 'availableRooms', 'checkinDate', 'checkoutDate'));
+        return view('frontend.hotel')->with(compact('hotel', 'availableRooms', 'checkinDate', 'checkoutDate','gallery'));
     }
 
     public function viewDestination($slug)

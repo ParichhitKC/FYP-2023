@@ -3,6 +3,10 @@
     width: 250px;
     height: 250px;
 }
+.table-story{
+    width: 1500px;
+    height:300px;
+}
 </style>
 <template>
     <router-link :to='{name:"createDestination"}' class="btn btn-primary">Create New Destination</router-link>
@@ -32,7 +36,7 @@
             <tr v-for="destination in destinations" :key="destination.id">
                 <td>{{ destination.id }}</td>
                 <td>{{ destination.name }}</td>
-                <td>{{ destination.stories }}</td>
+                <td class="table-story">{{ destination.stories }}</td>
                 <td>{{ destination.district }}</td>
                 <td>{{ destination.zone }}</td>
                 <td><img class="table-img" :src="`/images/${destination.title_image}`"></td>
