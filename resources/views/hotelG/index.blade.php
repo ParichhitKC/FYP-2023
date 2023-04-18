@@ -27,7 +27,7 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>Title</th>
+            <th>Name</th>
             <th>Image 1</th>
             <th>Image 2</th>
             <th>Image 3</th>

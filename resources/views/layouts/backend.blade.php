@@ -9,32 +9,35 @@
     <link rel="icon" type="image/x-icon" href="{{asset("assets_back/assets/img/favicon.ico")}}"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
-    <link href={{asset("assets_back/layouts/vertical-light-menu/css/light/loader.css")}} rel="stylesheet" type="text/css" />
+{{--    <link href={{asset("assets_back/layouts/vertical-light-menu/css/light/loader.css")}} rel="stylesheet" type="text/css" />--}}
     <link href="{{asset('assets_back/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href={{asset("assets_back/assets/css/plugins.css")}} rel="stylesheet" type="text/css" />
+
+
     @stack('css')
     @stack('script')
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-{{--    <style>--}}
-{{--        /*--}}
-{{--            The below code is for DEMO purpose --- Use it if you are using this demo otherwise Remove it--}}
-{{--        */--}}
-{{--        /*.navbar .navbar-item.navbar-dropdown {--}}
-{{--            margin-left: auto;--}}
-{{--        }*/--}}
-{{--        .layout-px-spacing {--}}
-{{--            min-height: calc(100vh - 140px)!important;--}}
-{{--        }--}}
+    <style>
+        /*
+            The below code is for DEMO purpose --- Use it if you are using this demo otherwise Remove it
+        */
+        /*.navbar .navbar-item.navbar-dropdown {
+            margin-left: auto;
+        }*/
+        .layout-px-spacing {
+            min-height: calc(100vh - 140px)!important;
+        }
 
-{{--    </style>--}}
+    </style>
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
 </head>
 <body class="sidebar-noneoverflow">
+
 <!--  BEGIN NAVBAR  -->
 <div class="header-container fixed-top">
     <header class="header navbar navbar-expand-sm">
@@ -49,10 +52,11 @@
             </li>
             <li class="nav-item toggle-sidebar">
                 <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg></a>
+
             </li>
         </ul>
 
-        <ul class="navbar-item flex-row navbar-dropdown ml-auto">
+        <ul class="navbar-item flex-row navbar-dropdown">
 
             <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,12 +67,12 @@
                         <div class="media mx-auto">
                             <img src="{{asset("assets_back/assets/img/profile-17.jpg")}}" class="img-fluid mr-2" alt="avatar">
                             <div class="media-body">
-{{--                                <h5>{{ Auth::user()->name }} </h5>--}}
+                                <h5>{{ Auth::user()->name }} </h5>
                             </div>
                         </div>
                     </div>
                     <div class="dropdown-item">
-                        <a href="{{route('logout') }}">
+                        <a  href="{{route('logout') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
                         </a>
                     </div>
@@ -94,7 +98,7 @@
                 <figure class="user-cover-image"></figure>
                 <div class="user-info">
                     <img src="{{asset("assets_back/assets/img/profile-17.jpg")}}" alt="avatar">
-{{--                    <h6 class="">{{ Auth::user()->name }}</h6>--}}
+                    <h6 class="">{{ Auth::user()->name }}</h6>
                 </div>
             </div>
             <div class="shadow-bottom"></div>
@@ -125,11 +129,19 @@
                         </div>
                     </a>
                 </li>
-                <li class="menu {{Request::is('DestinationGallery*') ? 'active' : ''}}">
-                    <a href="{{route('destinationG.index')}}" aria-expanded="{{Request::is('DestinationGallery*') ? 'true' : 'false'}}" class="dropdown-toggle">
+                <li class="menu {{Request::is('activity*') ? 'active' : ''}}">
+                    <a href="{{route('activity.index')}}" aria-expanded="{{Request::is('activity*') ? 'true' : 'false'}}" class="dropdown-toggle">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span> Destination Gallery</span>
+                            <span> Activity</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu {{Request::is('logout*') ? 'active' : ''}}">
+                    <a href="{{route('logout')}}" aria-expanded="{{Request::is('logout*') ? 'true' : 'false'}}" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span> Logout</span>
                         </div>
                     </a>
                 </li>
@@ -256,13 +268,12 @@
 
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <script src={{asset("assets_back/assets/js/libs/jquery-3.1.1.min.js")}}></script>
-<script src={{asset("assets_back/plugins/src/global/vendors.min.js")}}></script>
 <script src={{asset("assets_back/bootstrap/js/popper.min.js")}}></script>
 <script src={{asset("assets_back/bootstrap/js/bootstrap.min.js")}}></script>
 <script src={{asset("assets_back/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}></script>
 <script src={{asset("assets_back/assets/js/app.js")}}></script>
 <script src={{asset("assets_back/assets/js/custom.js")}}></script>
-<script src={{asset("assets_back/layouts/vertical-light-menu/app.js")}}></script>
+
 
 
 

@@ -76,7 +76,7 @@
                             <div class="col-12">
 
                                 <div class="form-input ">
-                                    <input id="current_password" name="current_password" placeholder="Current Password" type="password">
+                                    <input id="current_password" name="current_password" placeholder="Current Password" type="password" required>
                                     <i class="bi bi-eye-slash" id="togglePassword" style="position: relative; right: 25px; top: 9px;"></i>
                                     @error('current_password')
                                     <span class="invalid-feedback" role="alert" style="display: block;">
@@ -90,7 +90,7 @@
                             <div class="col-12">
 
                                 <div class="form-input ">
-                                    <input id="password" name="password" placeholder="New Password" type="password">
+                                    <input id="password" name="password" placeholder="New Password" type="password" required>
                                     <i class="bi bi-eye-slash" id="togglePasswordNew" style="position: relative; right:25px; top: 9px"></i>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@
                             <div class="col-12">
 
                                 <div class="form-input ">
-                                    <input id="confirm_password" name="confirm_password" placeholder="Confirm Password" type="password">
+                                    <input id="confirm_password" name="confirm_password" placeholder="Confirm Password" type="password" required>
                                     <i class="bi bi-eye-slash" id="toggleConfirmPassword" style="position: relative; right: 25px; top:9px;  "></i>
                                     @error('confirm_password')
                                     <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
 
                                         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
                                             Save Changes <div class="icon-arrow-top-right ml-15"></div>
-                                        </button>>
+                                        </button>
 
                                     </div>
 

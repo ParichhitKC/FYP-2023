@@ -22,5 +22,9 @@ class destination extends Model
     {
         return $this->hasMany(booking::class);
     }
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
 
 }

@@ -84,6 +84,9 @@
                                         <li>
                                             <a href="{{route('front.hotelList')}}">Hotel</a>
                                         </li>
+                                        <li>
+                                            <a href="{{route('front.contact')}}">Contact</a>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -118,7 +121,6 @@
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
-
                             </form>
                     </div>
                 </div>

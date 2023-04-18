@@ -156,7 +156,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="text-center text-150">
-                            <img src="https://babynestnepal.com/front/assets/images/logo.png" style="width: 100px;">
+                            <img src="{{asset('assets/img/general/Travel.svg')}}" style="width: 300px;">
                         </div>
                     </div>
                 </div>
@@ -172,6 +172,7 @@
                         </div>
                         <div class="text-grey-m2">
                             <div class="my-1">
+                                <span class="text-sm text-grey-m2 align-middle">Hotel Name:</span>
                                 {{$booking->room->hotel->title}}
                             </div>
 

@@ -55,7 +55,7 @@
                 <div class="row x-gap-20 y-gap-20 pt-20">
                     <div class="col-12">
                         <div class="form-input ">
-                            <input type="text"  required value="{{Auth::check() ? Auth::user()->name: ''}}" >
+                            <input type="text"  required value="{{Auth::check() ? Auth::user()->name: ''}}" name="user_id" >
                             <label class="lh-1 text-16 text-light-1">Full Name</label>
 
                         </div>
@@ -79,7 +79,7 @@
                     <div class="col-md-6">
 
                         <div class="form-input ">
-                            <input type="text" required value="{{$room->price}}" name="price">
+                            <input type="text" required value="{{$room->price * $duration}}" name="total">
                             <label class="lh-1 text-16 text-light-1">Price</label>
                         </div>
 

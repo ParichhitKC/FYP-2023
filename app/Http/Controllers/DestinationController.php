@@ -48,12 +48,6 @@ class DestinationController extends Controller
             new RendererStyle(400),
             new ImagickImageBackEnd()
         );
-//        $validatedData=$request->validate([
-//
-//            'title_image' => 'required',
-//            'stories_image' => 'required',
-//        ]);
-//        dd($request->all());
         $s_image = $request->file('stories_image');
         $t_image = $request->file('title_image');
         $qrfilename = time().'.png';

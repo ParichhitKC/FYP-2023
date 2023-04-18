@@ -29,4 +29,5 @@ class hotel extends Model
         return $this->hasMany(HotelGallery::class,'hotel_id');
     }
 
+
 }

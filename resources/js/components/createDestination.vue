@@ -86,9 +86,8 @@ export default {
         onFileChange(event) {
             this.storiesImage = event.target.files[0]
         },
-        FileChange(event){
+        FileChange(event) {
             this.titleImage = event.target.files[0]
-
         }
     }
 }
